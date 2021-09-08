@@ -1,0 +1,29 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Email</th>
+              <th scope="col">Type</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let request of requests'>
+              <td>{{request.userName}}</td>
+              <td>{{request.userType}}</td>
+              <td>{{request.isApproved? 'Approved':'Not Approved'}}</td>
+              <td>
+                <button *ngIf='!request.isApproved'
+                 type="button"
+                  class="btn btn-success"
+                  (click)='update(request)'>Activate</button>
+                <button *ngIf='request.isApproved'
+                         type="button" 
+                         class="btn btn-danger"
+                         (click)='update(request)'>DeActivate</button>
+              </td>
+            </tr>
+          </tbody>
+    </table>
+  </div>
